@@ -26,17 +26,16 @@ class EntregasModel {
         }
     }
 
-    async subProcesos(entrega: string){
+    async subProcesos(entrega: number){
+        console.log(entrega);
         try {
             const consulta: string = `
-                    SELECT ote.ot_entrega_id, ote.f_inicia, ote.f_finaliza, ote.seguimiento, 
-                    ote.id_responsable ,ote.f_real_ent, ote.tipo, ote.status, ote.plan_gen, 
-                    ote.tps_subproceso_id, sp.nombre AS subproceso, DATEDIFF(ote.f_real_ent, ote.f_finaliza) AS desviacion
-                    FROM ot_planeacion_entrega ote 
-                    INNER JOIN tps_subproceso sp ON sp.id_subproceso = ote.tps_subproceso_id
-                    inner JOIN tps_proceso p ON sp.tps_proceso_id = p.id_proceso
-                    WHERE ote.ot_entrega_id = ${entrega}
-                    and tps_proceso_id = 14
+                    select ote.ot_entrega_id, ote.f_inicia, ote.f_finaliza, ote.f_real_ent ,ote.seguimiento ,ote.tipo, ote.status, ote.plan_gen, ote.f_alta, ote.tps_subproceso_id, ote.id_responsable ,sp.nombre as subproceso,
+                    DATEDIFF(ote.f_real_ent, ote.f_finaliza) AS desviacion
+                    from ot_planeacion_entrega ote 
+                    inner join tps_subproceso sp on sp.id_subproceso = ote.tps_subproceso_id
+                    where ot_entrega_id = ${entrega}
+                    and tps_proceso_id = 14;
             `
             const [results] = await this.sequelize.query(consulta);
             return results;

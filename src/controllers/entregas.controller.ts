@@ -28,17 +28,18 @@ export default class entregasController {
     }
 
     async getProcesos(req: Request, res: Response) {
-        const id: string | any = req.query.id;
+        const id : any = req.query.entrega;
+        //console.log(id);
         try {
             const subprocesos = await Models.Entregas.subProcesos(id);
             if(!subprocesos){
                 res.status(400).json({
-                    ok: false,
+                    status: 'success',
                     msg: "Error en db consultar servicio técnico",
                   });
             }
-            res.status(400).json({
-                ok: true,
+            res.status(200).json({
+                status: 'success',
                 subprocesos
               });
             

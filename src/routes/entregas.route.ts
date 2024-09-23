@@ -12,7 +12,7 @@ class routeEntregas {
 
     routes() {
         this.router.get("/index", controllers.entregasController.getentregas);
-        this.router.get("/procesos", controllers.userController.getProcesos);
+        this.router.get("/procesos", controllers.entregasController.getProcesos);
     }
 }
 

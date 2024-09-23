@@ -1,5 +1,7 @@
-import UserModel from "./users.model";
+import UserModel from "../models/users.model";
+import EntregasModel from "./entregas.models";
 
 export const Models = {
-    userModel: new UserModel
+    User: new UserModel(),
+    Entregas: new EntregasModel
 }

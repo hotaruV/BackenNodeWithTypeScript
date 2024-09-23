@@ -2,7 +2,7 @@ import { Router } from "express";
 import { controllers } from "../controllers/controllers";
 
 
-class routeUser {
+class routeEntregas {
     public router: Router;
 
     constructor() {
@@ -11,9 +11,9 @@ class routeUser {
     }
 
     routes() {
-        this.router.get("/index", controllers.userController.getUsers);
-        //this.router.post("/user", controllers.userController.createUser);
+        this.router.get("/index", controllers.entregasController.getentregas);
+        this.router.get("/procesos", controllers.userController.getProcesos);
     }
 }
 
-export default routeUser;
+export default routeEntregas;

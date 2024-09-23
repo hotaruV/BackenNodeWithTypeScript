@@ -1,0 +1,15 @@
+PORT = 3000
+
+
+
+DATABASE = jrdinnova
+HOST = "localhost"
+USER = "root"
+PASS = ""
+DIALECT = "mysql"
+
+
+TOKEN_TIME_VALIDATE = 14h
+JWT_SECRET_KEY = M1h4ruH4yd33N1kt3P4H0t4ruV@slpcdmx$samRavius
+
+

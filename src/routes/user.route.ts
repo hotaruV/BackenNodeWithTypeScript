@@ -11,7 +11,7 @@ class routeUser {
     }
 
     routes() {
-        this.router.get("/index", controllers.userController.getIndex);
+        this.router.get("/index", controllers.userController.getUsers);
         this.router.post("/user", controllers.userController.createUser);
     }
 }

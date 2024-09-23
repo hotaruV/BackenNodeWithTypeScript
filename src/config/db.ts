@@ -1,9 +1,6 @@
-import {Sequelize} from "sequelize";
-
+import { Sequelize } from "sequelize";
 
 export default class connectDB {
-
-
     public confSQL = {
         dialect: process.env.DIALECT as string,
         host: process.env.HOST as string,
@@ -11,21 +8,28 @@ export default class connectDB {
         password: process.env.PASS as string,
         database: process.env.DATABASE as string,
     };
-    
+
+    private sequelize: Sequelize;
+
     constructor() {
+        this.sequelize = new Sequelize(this.confSQL.database, this.confSQL.username, this.confSQL.password, {
+            host: this.confSQL.host,
+            dialect: 'mysql',
+            logging: false, 
+        });
         this.dbConnect();
     }
-   async dbConnect(){
+
+    async dbConnect() {
         try {
-            const sqlize = new Sequelize(this.confSQL.database, this.confSQL.username, this.confSQL.password, {
-                host:  this.confSQL.host,
-                dialect: "mysql"
-              })
-              await sqlize.authenticate();
-              //console.log("La conexión a la base de datos SQL se ha realizado con éxito");
+            await this.sequelize.authenticate();
+            //console.log("Conexión a la base de datos establecida con éxito");
         } catch (error) {
-            console.error("Error en la conexión a la base de datos SQL:", error);
+            console.error("Error en la conexión a la base de datos:", error);
         }
     }
-    
+
+    public getInstance(): Sequelize {
+        return this.sequelize;
+    }
 }

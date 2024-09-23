@@ -21,6 +21,7 @@
     "moment": "^2.30.1",
     "mysql2": "^3.11.3",
     "sequelize": "^6.37.3",
+    "sequelize-auto": "^0.8.8",
     "sqlize": "^1.3.8",
     "uuid": "^10.0.0"
   },

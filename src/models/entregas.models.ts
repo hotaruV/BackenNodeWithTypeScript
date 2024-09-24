@@ -40,7 +40,8 @@ class EntregasModel {
             const [results] = await this.sequelize.query(consulta);
             return results;
         } catch (error) {
-            
+            console.error("Error al obtener los usuarios:", error);
+            throw error;
         }
     }
 

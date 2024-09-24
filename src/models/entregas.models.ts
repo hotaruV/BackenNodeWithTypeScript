@@ -44,7 +44,5 @@ class EntregasModel {
             throw error;
         }
     }
-
-
 }
 export default EntregasModel;
